@@ -20,7 +20,8 @@ COLORS = {"No": "#4C72B0", "Yes": "#DD8452"}
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("./data/WA_Fn-UseC_-HR-Employee-Attrition.csv")
+    url = ("https://raw.githubusercontent.com/jaoalmirante/hr-attrition-eda/refs/heads/main/data/WA_Fn-UseC_-HR-Employee-Attrition.csv")
+    df = pd.read_csv(url)
     df.drop(columns=["EmployeeCount", "Over18", "StandardHours"], inplace=True)
     df["Attrition_bin"] = (df["Attrition"] == "Yes").astype(int)
     df["SalaryBand"] = pd.cut(
